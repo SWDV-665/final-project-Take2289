@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h3 text-center *ngIf="loadItems().length ===0">
+     Welcome to the 76ers Online Store!
+
+
+  </h3>
+  <ion-card>
+    <img src="https://th.bing.com/th/id/R8cec9d48f1497249a066b1bd4a53509b?rik=TZW3yO4T5qci8g&pid=ImgRaw"/>
+  </ion-card>
+  <ion-card>
+    <img src="https://www.sportscasting.com/wp-content/uploads/2020/08/Ben-Simmons-Tobias-Harris-Al-Horford-Josh-Richardson-Joel-Embiid-Philadelphia-76ers.jpg"/>
+  </ion-card>
+  <ion-card>
+    <img src="https://thesixersense.com/wp-content/uploads/usat-images/2016/04/10005397-nba-indiana-pacers-at-philadelphia-76ers.jpeg"/>
+  </ion-card>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
+      <ion-item>
+        <h2>{{item.name}}</h2>
+        <p>{{item.quantity}}</p>
+      </ion-item>
+      <ion-item-options>
+        <button (click)="editItem(item, i)" ion-button color="primary" icon-start>
+          <ion-icon name="create"></ion-icon>
+          Edit
+        </button>
+
+        <button (click)="shareItem(item, i)" ion-button color="light" icon-start>
+          <ion-icon name="share"></ion-icon>
+          Share
+        </button>
+
+        <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button (click)="addItem()" ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+  
+</ion-content>
